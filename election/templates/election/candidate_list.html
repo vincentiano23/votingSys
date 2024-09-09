@@ -14,7 +14,11 @@
         <li class="list-group-item d-flex justify-content-between align-items-center">
             {{ candidate.name }} ({{ candidate.party }})
             <span>{{ candidate.votes }} votes</span>
-            <a href="{% url 'vote' candidate.id %}" class="btn btn-primary">Vote</a>
+            {% if voter_has_voted %}
+            <button class='btn btn-secondary' disabled> voted </button>
+            {% else %}
+            <button type="submit" name="candidate_id" value="{{ candidate.id }}" class="btn btn-primary">Vote</button>
+            {% endif %}
         </li>
         {% endfor %}
     </ul>

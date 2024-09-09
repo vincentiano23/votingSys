@@ -8,6 +8,7 @@ class Candidate(models.Model):
     def __str__(self):
         return self.name
 
+
 class Vote(models.Model):
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     voter_name = models.CharField(max_length=100)
