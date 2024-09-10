@@ -7,16 +7,21 @@
 <form method="post">
     {% csrf_token %}
     <label for="voter_name">Your Name:</label>
-    <input type="text" name="voter_name" id="voter_name" required>
-    
+  
+    <input type="text" name="voter_name" id="voter_name" required> <br>
+
+      <label for ="voter_id">Your ID: </label>
+      <input type ="text" name ="voter_id" id="voter_id" required><br>
+
     <ul class="list-group">
         {% for candidate in candidates %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             {{ candidate.name }} ({{ candidate.party }})
             <span>{{ candidate.votes }} votes</span>
-            {% if voter_has_voted %}
+            {% if voter_has_voted   %}
             <button class='btn btn-secondary' disabled> voted </button>
             {% else %}
+
             <button type="submit" name="candidate_id" value="{{ candidate.id }}" class="btn btn-primary">Vote</button>
             {% endif %}
         </li>
